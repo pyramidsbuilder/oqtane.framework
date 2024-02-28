@@ -20,6 +20,7 @@ using Microsoft.Extensions.Logging;
 using Oqtane.Components;
 using Oqtane.UI;
 using OqtaneSSR.Extensions;
+using Radzen;
 
 namespace Oqtane
 {
@@ -65,6 +66,9 @@ namespace Oqtane
             // register localization services
             services.AddLocalization(options => options.ResourcesPath = "Resources");
 
+            services.AddRadzenComponents();
+            services.AddScoped<DialogService>();
+            services.AddScoped<Radzen.NotificationService>();
             services.AddOptions<List<Database>>().Bind(Configuration.GetSection(SettingKeys.AvailableDatabasesSection));
             services.Configure<HostOptions>(opts => opts.ShutdownTimeout = TimeSpan.FromSeconds(10)); // increase from default of 5 seconds
 
