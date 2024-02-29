@@ -5,7 +5,7 @@
 @inject SiteState SiteState
 @* the following StreamRendering attribute is required - if it is removed the framework will not render the content in static rendering *@
 @attribute [StreamRendering] 
-
+<RadzenComponents />
 @if (_initialized)
 {
     @if (!_installation.Success)
