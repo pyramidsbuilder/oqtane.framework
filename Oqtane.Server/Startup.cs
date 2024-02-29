@@ -20,6 +20,7 @@ using Microsoft.Extensions.Logging;
 using Oqtane.Components;
 using Oqtane.UI;
 using OqtaneSSR.Extensions;
+using Radzen.Blazor;
 using Radzen;
 
 namespace Oqtane
@@ -80,6 +81,7 @@ namespace Oqtane
 
             // setup HttpClient for server side in a client side compatible fashion ( with auth cookie )
             services.AddHttpClients();
+
 
             // register singleton scoped core services
             services.AddSingleton(Configuration)
@@ -162,6 +164,9 @@ namespace Oqtane
                })
                .AddInteractiveWebAssemblyComponents();
 
+            services.AddRadzenComponents();
+            services.AddScoped<RadzenDialog>();
+            services.AddScoped<RadzenNotification>();
             services.AddSwaggerGen(options =>
             {
                 options.CustomSchemaIds(type => type.ToString()); // Handle SchemaId already used for different type
